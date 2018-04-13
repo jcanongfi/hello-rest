@@ -16,4 +16,11 @@ public class GreetingController {
         return new Greeting(counter.incrementAndGet(),
                             String.format(template, name));
     }
+
+    @RequestMapping("/hello")
+    public Greeting hello(@RequestParam(value="nom", defaultValue="Toi") String nom) {
+        return new Greeting(42,
+                            String.format("Bonjour, %s !", nom));
+    }
+
 }
