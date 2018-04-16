@@ -23,4 +23,17 @@ public class GreetingController {
                             String.format("Bonjour, %s !", nom));
     }
 
+    @RequestMapping("/kill")
+    public Greeting kill(@RequestParam(value="nom", defaultValue="Toi") String nom) {
+        System.exit(99);
+        return new Greeting(666,
+                            String.format("Session Killed !"));
+    }
+
+    @RequestMapping("/cpu")
+    public Greeting cpu(@RequestParam(value="time", defaultValue="10") String time) {
+        return new Greeting(99,
+                            String.format("%s pour 100 CPU !", time));
+    }
+
 }
