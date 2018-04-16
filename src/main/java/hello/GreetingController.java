@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GreetingController {
 
+
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
@@ -32,6 +33,10 @@ public class GreetingController {
 
     @RequestMapping("/cpu")
     public Greeting cpu(@RequestParam(value="time", defaultValue="10") String time) {
+        int i=2;
+        while (i==2) {
+           //System.out.println (i);
+	}
         return new Greeting(99,
                             String.format("%s pour 100 CPU !", time));
     }
