@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-	docker {
-		image 'maven:3.3.3'
-	}
-    }
+    agent any
     stages {
         stage('Build') {
             steps {
@@ -20,5 +16,11 @@ pipeline {
                 }
             }
         }
+        stage('Docker') {
+            steps {
+                sh 'docker build -t mon_appli:latest .'
+            }
+        }
     }
 }
+
