@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+                image 'maven:3.3.3'
+        }
+    }
     stages {
         stage('Build') {
             steps {
@@ -14,11 +18,6 @@ pipeline {
                 always {
                     junit 'target/surefire-reports/*.xml'
                 }
-            }
-        }
-        stage('Docker') {
-            steps {
-                sh 'docker build -t mon_appli:latest .'
             }
         }
     }
