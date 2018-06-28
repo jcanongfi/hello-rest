@@ -35,7 +35,6 @@ public class GreetingController {
     public Greeting cpu(@RequestParam(value="time", defaultValue="10") String time) {
         int i=2;
         while (i==2) {
-           //System.out.println (i);
 	}
         return new Greeting(99,
                             String.format("%s pour 100 CPU !", time));
