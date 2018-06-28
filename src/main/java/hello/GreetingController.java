@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class GreetingController {
 
 
-    private static final String template = "Hello, %s!";
+    private static final String TEMPLATE = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/greeting")
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
         return new Greeting(counter.incrementAndGet(),
-                            String.format(template, name));
+                            String.format(TEMPLATE, name));
     }
 
     @RequestMapping("/hello")
@@ -27,14 +27,15 @@ public class GreetingController {
     @RequestMapping("/kill")
     public Greeting kill(@RequestParam(value="nom", defaultValue="Toi") String nom) {
         System.exit(99);
-        return new Greeting(666,
-                            String.format("Session Killed !"));
+        return new Greeting(666,"Session Killed !");
     }
 
     @RequestMapping("/cpu")
     public Greeting cpu(@RequestParam(value="time", defaultValue="10") String time) {
         int i=2;
+        int y=3;
         while (i==2) {
+		y=y+1;
 	}
         return new Greeting(99,
                             String.format("%s pour 100 CPU !", time));
